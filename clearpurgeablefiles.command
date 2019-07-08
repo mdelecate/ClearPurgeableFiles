@@ -8,7 +8,7 @@ printf 'To be safe, save any open documents and quit running applications now.\n
 printf 'Once your disk is nearly full, you might see the following dialog box:\n\"Your Disk space is critically low.\"\n\n' && sleep 3 && \
 printf 'This is normal.\n\n' && sleep 3 && \
 startspace=$(($(df -m / | awk 'int($4){print $4}') * 1024 * 1024 / 1000000000)) && \
-printf 'You currently have '$startspace'GB of available space.\n\n' && sleep 1 && \
+printf 'You currently have '$startspace' GB of available space.\n\n' && sleep 1 && \
 printf 'If you need to interrupt this process, press: control+c\n\n' && sleep 3 && \
 printf 'Creating folder "ClearPurgeableSpace" on desktop... \t' && \
 mkdir -p ~/Desktop/ClearPurgeableSpace && \
@@ -19,9 +19,9 @@ diskspace=$(($(df -m / | awk 'int($4){print $4}') * 1024 * 1024 / 1000000)) && d
 while [ 0 ]
 do
 if [ $diskspace_new -gt $diskspace ]
-then printf 'Approx '$(($diskspace_new - $diskspace))'M of purgeable space was just cleared! Continuing...\n\n'
+then printf 'Approx '$(($diskspace_new - $diskspace))' MB of purgeable space was just cleared! Continuing...\n\n'
 fi
-diskspace=$(($(df -m / | awk 'int($4){print $4}') * 1024 * 1024 / 1000000)) && printf $diskspace'MB remaining, please wait...\n'
+diskspace=$(($(df -m / | awk 'int($4){print $4}') * 1024 * 1024 / 1000000)) && printf $diskspace' MB remaining, please wait...\n'
 if [ 8000 -lt $diskspace ]
 then cp ~/Desktop/ClearPurgeableSpace/largefile4G{,"$(date)"} && sleep 1 && waiting=0
 elif [ 2000 -lt $diskspace ]
@@ -40,6 +40,6 @@ printf 'Purging complete.\n\nClearing temporary files...\n' && \
 rm -R ~/Desktop/ClearPurgeableSpace && \
 printf 'All done! Your disk space has been reclaimed.\n\n' && \
 endspace=$(($(df -m / | awk 'int($4){print $4}') * 1024 * 1024 / 1000000000)) && \
-printf 'You just recovered '$(($endspace - $startspace))'GB!\n\n' && sleep 2 && \
-printf 'You now have '$endspace'GB of available space.\n\n' && sleep 2 && \
+printf 'You just recovered '$(($endspace - $startspace))' GB!\n\n' && sleep 2 && \
+printf 'You now have '$endspace' GB of free space.\n\n' && sleep 2 && \
 printf 'Goodbye!\n\n\n\n\n';
