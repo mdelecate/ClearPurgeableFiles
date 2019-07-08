@@ -40,7 +40,7 @@ else break
 fi
 diskspace_new=$(($(df -m / | awk 'int($4){print $4}') * 1024 * 1024 / 1000000))
 done && \
-printf 'Purging complete.\n\nClearing temporary files...\n' && \
+printf '\nPurging complete.\n\nClearing temporary files...\n' && \
 rm -R ~/Desktop/ClearPurgeableSpace && \
 printf 'All done! Your disk space has been reclaimed.\n\n' && \
 endspace=$(($(df -m / | awk 'int($4){print $4}') * 1024 * 1024 / 1000000000)) && \
