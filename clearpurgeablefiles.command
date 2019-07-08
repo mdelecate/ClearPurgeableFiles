@@ -27,9 +27,9 @@ then cp ~/Desktop/ClearPurgeableSpace/largefile4G{,"$(date)"} && sleep 1 && wait
 elif [ 2000 -lt $diskspace ]
 then cp ~/Desktop/ClearPurgeableSpace/largefile500M{,"$(date)"} && sleep 1 && waiting=0
 elif [ 800 -lt $diskspace ]
-then cp ~/Desktop/ClearPurgeableSpace/largefile100M{,"$(date)"} && sleep 1 $$ waiting=0
+then cp ~/Desktop/ClearPurgeableSpace/largefile100M{,"$(date)"} && sleep 1 && waiting=0
 elif [ 500 -lt $diskspace ]
-then cp ~/Desktop/ClearPurgeableSpace/largefile100M{,"$(date)"} && sleep 1 $$ waiting=1
+then cp ~/Desktop/ClearPurgeableSpace/largefile100M{,"$(date)"} && sleep 1 && waiting=1
 elif [ $waiting -eq 1 ]
 then printf 'Pausing for 5 seconds to give OS time to purge, please wait...\n\n' && sleep 5 && waiting=2
 elif [ $waiting -eq 2 ]
