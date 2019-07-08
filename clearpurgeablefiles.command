@@ -19,7 +19,7 @@ diskspace=$(($(df -m / | awk 'int($4){print $4}') * 1024 * 1024 / 1000000)) && d
 while [ 0 ]
 do
 if [ $diskspace_new -gt $diskspace ]
-then printf 'Approx '$(($diskspace_new - $diskspace))' MB of purgeable space was just cleared! Continuing...\n\n'
+then printf '\nApprox '$(($diskspace_new - $diskspace))' MB of purgeable space was just cleared! Continuing...\n\n'
 fi
 diskspace=$(($(df -m / | awk 'int($4){print $4}') * 1024 * 1024 / 1000000)) && printf $diskspace' MB remaining, please wait...\n'
 if [ 8000 -lt $diskspace ]
@@ -31,11 +31,11 @@ then cp ~/Desktop/ClearPurgeableSpace/largefile100M{,"$(date)"} && sleep 1 && wa
 elif [ 500 -lt $diskspace ]
 then cp ~/Desktop/ClearPurgeableSpace/largefile100M{,"$(date)"} && sleep 1 && waiting=1
 elif [ $waiting -eq 1 ]
-then printf 'Pausing for 5 seconds to give OS time to purge, please wait...\n\n' && sleep 5 && waiting=2
+then printf '\nPausing for 5 seconds to give OS time to purge, please wait...\n\n' && sleep 5 && waiting=2
 elif [ $waiting -eq 2 ]
-then printf 'Pausing for 10 seconds to give OS time to purge, please wait...\n\n' && sleep 10 && waiting=3
+then printf '\nPausing for 10 seconds to give OS time to purge, please wait...\n\n' && sleep 10 && waiting=3
 elif [ $waiting -eq 3 ]
-then printf 'Pausing for 15 seconds to give OS time to purge, please wait...\n\n' && sleep 15
+then printf '\nPausing for 15 seconds to give OS time to purge, please wait...\n\n' && sleep 15 && waiting=4
 else break
 fi
 diskspace_new=$(($(df -m / | awk 'int($4){print $4}') * 1024 * 1024 / 1000000))
