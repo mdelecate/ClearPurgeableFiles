@@ -30,14 +30,14 @@ elif [ 2000 -lt $diskspace ]
 then cp ~/Desktop/ClearPurgeableSpace/largefile500M{,"$(date)"} && sleep 1 && waiting=0
 elif [ 800 -lt $diskspace ]
 then cp ~/Desktop/ClearPurgeableSpace/largefile100M{,"$(date)"} && sleep 1 && waiting=0
-elif [ 500 -lt $diskspace ]
+elif [ 400 -lt $diskspace ]
 then cp ~/Desktop/ClearPurgeableSpace/largefile100M{,"$(date)"} && sleep 1 && waiting=1
 elif [ $waiting -eq 1 ]
 then printf '\nPausing for 5 seconds to give OS time to purge, please wait...\n\n' && sleep 5 && waiting=2
 elif [ $waiting -eq 2 ]
 then printf '\nPausing for 10 seconds to give OS time to purge, please wait...\n\n' && sleep 10 && waiting=3
 elif [ $waiting -eq 3 ]
-then printf '\nPausing for 15 seconds to give OS time to purge, please wait...\n\n' && sleep 15 && waiting=4
+then printf '\nPausing for 30 seconds to give OS time to purge, please wait...\n\n' && sleep 30 && waiting=4
 else break
 fi
 diskspace_new=$(($(df -m / | awk 'int($4){print $4}') * 1024 * 1024 / 1000000))
