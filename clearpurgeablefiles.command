@@ -1,5 +1,5 @@
 #!/bin/bash
-# If you can't run this script directly, copy and paste this into the terminal 
+# Copy and paste this into the terminal if you cant run it directly
 
 startspace=$(($(df -m / | awk 'int($4){print $4}') * 1024 * 1024 / 1000000000))
 filepath=~/Desktop/ClearPurgeableSpace
@@ -76,9 +76,12 @@ do
 		printf '\nThere is no more space left.\n\n' && break
 	fi
 done
+
 printf '\nPurging complete.\n\nClearing temporary files...\n'
 rm -R $filepath
+
 printf 'All done! Your disk space has been reclaimed.\n\n'
+
 endspace=$(($(df -m / | awk 'int($4){print $4}') * 1024 * 1024 / 1000000000))
 printf 'You just recovered '$(($endspace - $startspace))' GB!\n\n' && sleep 2
 printf 'You now have '$endspace' GB of free space.\n\n' && sleep 2
