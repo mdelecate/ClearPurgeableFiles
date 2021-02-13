@@ -25,13 +25,13 @@ then printf '\nApprox '$(($diskspace_new - $diskspace))' MB of purgeable space w
 fi
 diskspace=$(($(df -m / | awk 'int($4){print $4}') * 1024 * 1024 / 1000000)) && printf $diskspace' MB remaining, please wait...\n'
 if [ 8000 -lt $diskspace ]
-then cp ~/Desktop/ClearPurgeableSpace/largefile4G{,"$(date)"} && sleep 1 && waiting=0
+then cp ~/Desktop/ClearPurgeableSpace/largefile4G{," $(date +%s%N)"} && sleep 1 && waiting=0
 elif [ 2000 -lt $diskspace ]
-then cp ~/Desktop/ClearPurgeableSpace/largefile500M{,"$(date)"} && sleep 1 && waiting=0
+then cp ~/Desktop/ClearPurgeableSpace/largefile500M{," $(date +%s%N)"} && sleep 1 && waiting=0
 elif [ 800 -lt $diskspace ]
-then cp ~/Desktop/ClearPurgeableSpace/largefile100M{,"$(date)"} && sleep 1 && waiting=0
+then cp ~/Desktop/ClearPurgeableSpace/largefile100M{," $(date +%s%N)"} && sleep 1 && waiting=0
 elif [ 500 -lt $diskspace ]
-then cp ~/Desktop/ClearPurgeableSpace/largefile100M{,"$(date)"} && sleep 1 && waiting=1
+then cp ~/Desktop/ClearPurgeableSpace/largefile100M{," $(date +%s%N)"} && sleep 1 && waiting=1
 elif [ $waiting -eq 1 ]
 then printf '\nPausing for 5 seconds to give OS time to purge, please wait...\n\n' && sleep 5 && waiting=2
 elif [ $waiting -eq 2 ]
