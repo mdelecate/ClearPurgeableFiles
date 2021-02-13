@@ -1,6 +1,5 @@
 #!/bin/bash
-# Hold control and click this file, then select "Open"
-# Or copy and paste this script into the terminal 
+# If you can't run this script directly, copy and paste this into the terminal 
 
 startspace=$(($(df -m / | awk 'int($4){print $4}') * 1024 * 1024 / 1000000000))
 filepath=~/Desktop/ClearPurgeableSpace
