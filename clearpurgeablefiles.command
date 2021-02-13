@@ -1,6 +1,6 @@
 #!/bin/bash
 # Hold control and click this file, then select "Open"
-# Or copy and paste this into terminal 
+# Or copy and paste the below into terminal 
 
 clear && \
 printf 'Hi there!\n\n' && sleep 1 && \
